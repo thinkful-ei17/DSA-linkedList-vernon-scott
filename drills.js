@@ -168,9 +168,10 @@ function display(linkedList){
   if (!linkedList.head) {
     return null;
   }
-  const list =[];
 
+  const list =[];
   let current = linkedList.head;
+
   while (current !== null) {
     list.push(current.value);
     current = current.next;
@@ -179,7 +180,63 @@ function display(linkedList){
   return;
 }
 
+function size(linkedList){
+  if (!linkedList.head) {
+    return null;
+  }
 
+  let counter = 0;
+  let current = linkedList.head;
+
+  while (current !== null) {
+    counter++;
+    current = current.next;
+  }
+  console.log('Number of items in list:', counter);
+  return;
+}
+
+function isEmpty(linkedList){
+  if (!linkedList.head){
+    console.log('List is empty'); 
+    return;
+  }
+  console.log('List is not empty');
+  return;
+}  
+
+function findPrevious(linkedList, item){
+  if (!linkedList.head) {
+    return null;
+  }
+  let current = linkedList.head;
+  let previous= linkedList.head;
+
+  while(current !== null){
+    if(current.value === item){
+      console.log('Previous node is:', previous);
+      return previous;
+    }
+    previous = current;
+    current = current.next;
+  }
+  console.log('Invalid item');
+  return;   
+}
+
+function findLast(linkedList){
+  if (!linkedList.head) {
+    return null;
+  }
+  let current = linkedList.head;
+
+  while (current.next !== null) {
+    current = current.next;
+  }
+
+  console.log('Last node in list:', current);
+  return current;   
+}
 
 
 const names = ['Apollo', 'Boomer', 'Helo', 'Husker', 'Starbuck'];
@@ -197,12 +254,19 @@ function main(items){
   // SLL.insertFirst('Apollo');
   // SLL.insertAt(1, 'Casey');
   // SLL.insertAfter('Apollo', 'Casey');
-  // SLL.insertBefore('Boomer', 'Athena');
-  SLL.insertAfter('Helo', 'Hotdog');
-  SLL.insertAt(3, 'Kat');
+  SLL.insertBefore('Boomer', 'Athena');
+  SLL.insertAfter('Apollo', 'Hotdog');
+  // SLL.insertAt(3, 'Kat');
   SLL.remove('Tauhida');
   // SLL.printList();
   display(SLL);
+  size(SLL);
+  isEmpty(SLL);
+  findPrevious(SLL, 'Helo');
+  findLast(SLL);
+
+
+
   return;
 }
 
